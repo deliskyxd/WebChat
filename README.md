@@ -1,15 +1,15 @@
 # WebChat App
 
-Technologies:
+## Technologies:
 
 - WebSockets
 - React
 
 ---
 
-Catalog structure:
+## Catalog structure:
 
-/build -> cloud package configuration (AWS)
-/cmd -> główne pliki aplikacji (Golang)
-/tools -> air - live reload dla Go
-/web -> aplikacja React
+- /build -> cloud package configuration (AWS)
+- /cmd -> główne pliki aplikacji (Golang)
+- /tools -> air - live reload dla Go
+- /web -> aplikacja React
