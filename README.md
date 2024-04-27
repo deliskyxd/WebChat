@@ -2,6 +2,13 @@
 
 ## Technologies:
 
+### Programming Languages:
+- Golang
+- HTML
+- JavaScript
+- CSS
+
+### Libraries/Technologies:
 - WebSockets
 - React
 
