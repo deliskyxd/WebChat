@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ChatRoom from "./ChatRoom.jsx";
 import UsernameInput from "./UsernameInput.jsx";
 
@@ -23,24 +23,17 @@ const App = () => {
   };
 
   return (
-    <>
-      <p>P2P Chat</p>
+    <div className="main-area">
+      <h1>P2P Chat</h1>
       <p>Currently online users: {onlineUsers.length}</p>
-      <div>
+      <div className="chat-room">
         {username ? (
           <ChatRoom username={username} handleLeave={handleLeave} />
         ) : (
           <UsernameInput onJoin={handleJoin} />
         )}
       </div>
-      <div>
-        <ul>
-          {onlineUsers.map((user) => (
-            <li key={user}>{user}</li>
-          ))}
-        </ul>
-      </div>
-    </>
+    </div>
   );
 };
 
