@@ -1,31 +1,43 @@
 import { useState } from "react";
 
-const ChatRoom = ({ username }) => {
+const ChatRoom = ({ username, handleLeave }) => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
-  const handleSend = () => {
-    setMessages([...messages, { username, text: message }]);
+  const handleSend = (message) => {
+    const timestamp = new Date().toLocaleTimeString();
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { text: message, timestamp, username },
+    ]);
     setMessage("");
   };
 
   return (
-    <div>
+    <>
       <div>
-        {messages.map((msg, index) => (
-          <div key={index}>
-            <strong>{msg.username}</strong>: {msg.text}
-          </div>
-        ))}
+        <ul>
+          {messages.map((message, index) => (
+            <li key={index}>
+              <span>
+                [{message.timestamp}] {message.username}:{" "}
+              </span>
+              <span>{message.text}</span>
+            </li>
+          ))}
+        </ul>
+        <input
+          type="text"
+          placeholder="Enter your message"
+          value={message}
+          onChange={(event) => setMessage(event.target.value)}
+        />
+        <button onClick={() => handleSend(message)}>Send</button>
       </div>
-      <input
-        type="text"
-        placeholder="Enter your message"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
-      <button onClick={handleSend}>Send</button>
-    </div>
+      <div>
+        <button onClick={handleLeave}>Leave</button>
+      </div>
+    </>
   );
 };
 

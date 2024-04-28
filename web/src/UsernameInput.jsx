@@ -2,21 +2,29 @@ import { useState } from "react";
 
 const UsernameInput = ({ onJoin }) => {
   const [username, setUsername] = useState("");
+  const [error, setError] = useState(null);
 
-  const handleJoin = () => {
-    onJoin(username);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (username.trim() === "") {
+      setError("Username cannot be empty");
+    } else {
+      setError(null);
+      onJoin(username);
+    }
   };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Enter your username"
         value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        onChange={(event) => setUsername(event.target.value)}
       />
-      <button onClick={handleJoin}>Join</button>
-    </div>
+      <button type="submit">Join</button>
+      {error && <p>{error}</p>}
+    </form>
   );
 };
 
