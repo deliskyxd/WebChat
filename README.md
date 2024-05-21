@@ -16,7 +16,6 @@
 
 ## Catalog structure:
 
-- /build -> cloud package configuration (AWS)
-- /cmd -> główne pliki aplikacji (Golang)
+- /cmd -> główne pliki aplikacji (Golang) + cloud package configuration (AWS)
 - /tools -> air - live reload dla Go
 - /web -> aplikacja React
